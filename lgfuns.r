@@ -1,5 +1,5 @@
 
-createpops <- function(n, mindist, landscape, plot=TRUE)
+create.pops <- function(n, mindist, landscape, plot=TRUE)
 {  
   minx <- raster::extent(landscape)@xmin #get the min and max  coordinates
   miny <- raster::extent(landscape)@ymin #coordinates of the landscape
@@ -32,4 +32,16 @@ createpops <- function(n, mindist, landscape, plot=TRUE)
     points(coords, pch=16)
   }
   return( as.matrix( coords))
+}
+
+
+create.resistance <- function(nx=50, ny=50, p=0.5, A=0.5, resVal=10, plotres=TRUE) {
+nx=nx
+ny=ny
+tempmask<-secr::make.mask(nx=nx,ny=ny,spacing=1)
+r <- secr::raster(randomHabitat(tempmask, p = p, A = A))
+#set non-habitat to friction values of 10
+values(r)[is.na(values(r))==T]<- resVal
+if (plotres) plot(r)
+return(r)
 }
