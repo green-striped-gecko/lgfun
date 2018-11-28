@@ -34,6 +34,16 @@ create.pops <- function(n, mindist, landscape, plot=TRUE)
   return( as.matrix( coords))
 }
 
+pops2gl <- function(simpops, locs, n.cov=3)
+{
+simpops <- simpops
+locs <- locs
+n.cov=n.cov
+gi <- pops2genind(simpops, locs, n.cov)
+gl <- gi2gl(gi)
+}
+
+
 
 create.resistance <- function(nx=50, ny=50, p=0.5, A=0.5, resVal=10, plotres=TRUE) {
 nx=nx
