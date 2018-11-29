@@ -34,7 +34,7 @@ create.pops <- function(n, mindist, landscape, plot=TRUE)
   return( as.matrix( coords))
 }
 
-pops2gl <- function(simpops, locs, n.cov=3)
+pops2gl <- function(simpops, locs=NULL, n.cov=3)
 {
 simpops <- simpops
 locs <- locs
